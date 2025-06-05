@@ -4,13 +4,19 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+//RegisterApi Api
 export class ApiService {
-  serverurl:string='http://localhost:4000'
-    // injucting the dependencies in constructor
-  constructor(private http:HttpClient) { }
+  serverurl: string = 'http://localhost:4000'
+  // injucting the dependencies in constructor
+  constructor(private http: HttpClient) { }
   // api to register
-  registerApi(reqBody:any){
+  registerApi(reqBody: any) {
     // http class used insted of axios(react)-way better than axios
-    return this.http.post(`${this.serverurl}/user-register`,reqBody)
+    return this.http.post(`${this.serverurl}/user-register`, reqBody)
+  }
+  // LoginApi
+  loginApi(reqBody: any) {
+    return this.http.post(`${this.serverurl}/user-login`, reqBody)
   }
 }
+

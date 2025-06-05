@@ -26,10 +26,19 @@
                 <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <i class="fa-solid fa-user me-2"></i>
+                    @if (isLogin) {
+                    <span>Hi {{username}}</span>
+                    }
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" routerLink="/login">Login</a></li>
+
+                    @if(!isLogin){<li><a class="dropdown-item" routerLink="/login">Login</a></li>
                     <li><a class="dropdown-item" routerLink="/register">Register</a></li>
+                    }
+                    @if (isLogin) {
+                    <li><a class="dropdown-item" routerLink="/login">Profile</a></li>
+                    <li><a class="dropdown-item" routerLink="/register">Logout</a></li>
+                    }
                 </ul>
             </div>
         </div>
