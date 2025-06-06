@@ -7,8 +7,8 @@
             <h1>The Easiest Way <br>
                 To Make Your <br>
                 Favourite Meal</h1>
-                <p>Discover 100+ Recipies in your hand with the best recipes. Help you to find the easiest way to cook</p>
-                <button class="btn btn-warning mt-5">Explore Recipies</button>
+            <p>Discover 100+ Recipies in your hand with the best recipes. Help you to find the easiest way to cook</p>
+            <button class="btn btn-warning mt-5">Explore Recipies</button>
         </div>
         <div class="col-md-6">
             <img id="landingImg" src="plate.png" alt="No Image" style="width:100%; border-radius: 400px;">
@@ -28,27 +28,22 @@
         </div>
     </div>
     <div class="row text-center mt-4 justify-content-center">
+        @if (HomeRecipe.length>0) {
+        @for (item of HomeRecipe; track $index) {
         <div class="col-md-4 mb-4">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWwNz-YV88e3LFP6iisBcZT-loky1VotV4aQ&s"
+            <img [src]="item.image"
                 class="card-img-top" alt="Classic Margherita Pizza" style="max-height: 250px; width: 300px; ">
             <div class="card-body">
-                <h5 class="card-title" style="font-weight: 500;">Classic Margherita Pizza</h5>
+                <h5 class="card-title mb-3 mt-2" style="font-weight: 500;">{{item.name}}</h5>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVo0qb5azJVPDwjPf2xQhxH3xlrsQdocU4Iw&s"
-                class="card-img-top" alt="Quinoa Salad with Avocado" style="max-height: 250px; width: 300px; ">
-            <div class="card-body">
-                <h5 class="card-title" style="font-weight: 500;">Quinoa Salad with Avocado</h5>
-            </div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoHGgftpONVp-CrYJiIQbzcSyobzmEH5JEuQ&s"
-                class="card-img-top" alt="Tomato Basil Bruschetta" style="height: 250px; width: 300px; ">
-            <div class="card-body">
-                <h5 class="card-title" style="font-weight: 500;">Tomato Basil Bruschetta</h5>
-            </div>
-        </div>
+        }
+        }@else {
+        <h2>NO items to show...</h2>
+        }
+
+
+
     </div>
 </div>
 
