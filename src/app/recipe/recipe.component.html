@@ -1,52 +1,63 @@
 <app-header></app-header>
+<h6 class="text-end mb-3 me-5 pe-4 text-success">{{time|date:"fullDate"}}</h6>
 
 <div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-md-4">
+
             <h4 class="mt-5">Filter</h4>
             <div class="mt-4">
-                <button class="btn ">All</button>
-                <div class="dropdown mt-5 ">
-                    <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Cuisine
-                    </button>
-                    <div class="dropdown-menu border-0">
-                        @for (item of cusineType; track $index) {
-                        <button class="btn">{{item}}</button>
-                        }
-                    </div>
+                <button (click)="allRecipeButton()" class="btn ">All</button>
+                <br />
+                <button class="btn " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    CusineType
+                </button>
+                <div class="collapse" id="collapseExample">
+                    @for (item of cusineType; track $index) {
+                    <button (click)="filterCusine(item)" class="btn">{{item}}</button>
+                    }
                 </div>
-                <div class="dropdown mt-5">
-                    <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        MealType
-                    </button>
-                    <div class="dropdown-menu border-0">
-                        @for (item of mealType; track $index) {
-                        <button class="btn">{{item}}</button>
-                        }
-                    </div>
+                <br />
+
+                <button class="btn " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1"
+                    aria-expanded="false" aria-controls="collapseExample1">
+                    MealType
+                </button>
+                <div class="collapse" id="collapseExample1">
+                    @for (item of mealType; track $index) {
+                    <button (click)="filterMealType(item)" class="btn">{{item}}</button>
+                    }
                 </div>
+
             </div>
         </div>
         <div class="col-md-8">
             <div class="d-flex justify-content-between">
                 <h1>All Recipes</h1>
-                <input type="text" placeholder="search recipes Here!" class="form-control w-50">
+                <input [(ngModel)]="searchKey" type="text" placeholder="search recipes Here!" class="form-control w-50">
             </div>
             <div class="row my-5">
                 @if (allRecipes.length>0) {
-                    @for (item of allRecipes; track $index) {
+                <!-- (allRecipes|search:searchKey )is a custom pipe made for searching-->
+                <!-- pagenation pipe is given to allrecipes -->
+                @for (item of allRecipes|search:searchKey
+                | paginate: { itemsPerPage: 6, currentPage: p }; track $index) {
                 <div class="col-md-4 p-3">
-                    <img [src]="item.image"
-                        alt="no image" class="w-100 rounded">
+                    <img [src]="item.image" alt="no image" class="w-100 rounded">
                     <h4 class="mt-2">{{item.name}}</h4>
                     <p><b>Cuisne: </b>{{item.cuisine}}</p>
                 </div>
                 }
-            }@else {
+                }@else {
                 <h1>Loading...</h1>
-            }
+                }
+            </div>
+            <div class="d-flex justify-content-center align-items-center my-5  ">
+                <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
             </div>
         </div>
     </div>
+
+
 </div>
