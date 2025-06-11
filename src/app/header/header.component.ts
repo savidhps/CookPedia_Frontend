@@ -16,8 +16,8 @@ export class HeaderComponent {
     if (sessionStorage.getItem("token")) {
       this.isLogin=true
       this.username=JSON.parse(sessionStorage.getItem('user')||"").username
-      console.log(this.isLogin)
-      console.log(this.username);
+      // console.log(this.isLogin)
+      // console.log(this.username);
       
     }
   }

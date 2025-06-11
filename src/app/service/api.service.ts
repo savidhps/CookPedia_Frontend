@@ -35,9 +35,25 @@ export class ApiService {
     }
     return {headers}
   }
-
+//view sing recipes
   viewRecipeApi(id:string){
     return this.http.get(`${this.serverurl}/view/${id}`,this.appendToken())
+  }
+
+  // api to view related recipes 
+  relatedRecipesApi(cuisine:any){
+    return this.http.get(`${this.serverurl}/related-recipes?cuisine=${cuisine}`,this.appendToken())
+  }
+
+  //add save recipe
+  addSaveReciesApi(rec:string,reqBody:any){
+    return this.http.post(`${this.serverurl}/save-recipe/${rec}`,reqBody,this.appendToken())
+  }
+
+  //download recipe api
+  addDownloadRecipeApi(rec:string,reqBody:any){
+    return this.http.post(`${this.serverurl}/download-recipe/${rec}`,reqBody,this.appendToken())
+    
   }
 }
 

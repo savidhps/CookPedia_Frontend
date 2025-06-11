@@ -6,13 +6,14 @@ import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from '../pipes/search.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import Swal from 'sweetalert2';
 
 //comenent is a deceroater |metadata
 @Component({
   selector: 'app-recipe',
   //search pipe is a custome pipe
-  imports: [HeaderComponent,RouterLink, DatePipe, FormsModule, SearchPipe, NgxPaginationModule],
+  imports: [HeaderComponent, DatePipe, FormsModule, SearchPipe, NgxPaginationModule],
   templateUrl: './recipe.component.html',
   styleUrl: './recipe.component.css'
 })
@@ -29,7 +30,7 @@ export class RecipeComponent {
 
 
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService,private router:Router) { }
 
   ngOnInit() {
     this.getAllRecipes()
@@ -75,5 +76,18 @@ export class RecipeComponent {
   }
   allRecipeButton() {
     this.allRecipes = this.dummyArray
+  }
+  viewRecipe(id:any){
+    const token=sessionStorage.getItem("token")
+    if(token){
+      this.router.navigateByUrl(`/view/${id}`)
+    }else{
+      Swal.fire({
+        title:"opps",
+        text:'please login',
+        icon:'info'
+      })
+      this.router.navigateByUrl('/login')
+    }
   }
 }
