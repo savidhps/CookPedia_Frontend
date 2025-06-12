@@ -1,0 +1,45 @@
+<app-header></app-header>
+
+<div class="container my-5">
+    <h1 class="text-center text-success">Profile</h1>
+    <div class="row mt-5">
+        <div class="col-md-6" style="text-align: justify;">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid et vitae corrupti cupiditate quasi
+                facilis voluptas nostrum. Omnis impedit sapiente ipsa nemo, esse, praesentium reiciendis voluptas,
+                tempore rem cupiditate quos.</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias iusto vitae consectetur ea fugiat esse
+                ducimus, quis asperiores nesciunt nisi quasi earum suscipit, impedit vel, ab tempore? Culpa, minus
+                distinctio.
+
+            </p>
+        </div>
+        <div class="col-md-6">
+            <div class="shadow rounded p-4 d-flex justify-content-center align-items-center flex-column">
+                <label for="Profile">
+                    <input (change)="getFile($event)" id="Profile" type="file" style="display: none;">
+                    <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBvBqfG9-OQFMsJDTUJVzpVrwptxoNf7s9qw&s"
+                        alt="No Profile" style="width: 290px;height: 200px;"> -->
+                        <img [src]="uploadedImage==''? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBvBqfG9-OQFMsJDTUJVzpVrwptxoNf7s9qw&s':uploadedImage"
+                        alt="No Profile" style="width: 290px;height: 200px;">
+                </label>
+                <button class="btn btn-success mt-3 w-100">Upload</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row  ">
+        <h3 class="text-success mb-4">Downloaed Recipes</h3>
+        @if (downloadedRecipes.length>0) {
+        @for (item of downloadedRecipes; track $index) {
+        <div class="col-md-3">
+            <img [src]="item.image" alt="" style="width: 200px;height: 200px;">
+            <h5>{{item.name}}</h5>
+            <p>Cusine: {{item.cuisine}}</p>
+        </div>
+        }
+        }@else {
+        <p>no Downloades Yet....</p>
+        }
+    </div>
+</div>

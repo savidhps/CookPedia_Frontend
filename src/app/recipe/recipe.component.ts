@@ -77,6 +77,7 @@ export class RecipeComponent {
   allRecipeButton() {
     this.allRecipes = this.dummyArray
   }
+  
   viewRecipe(id:any){
     const token=sessionStorage.getItem("token")
     if(token){

@@ -1,0 +1,25 @@
+<app-header></app-header>
+
+<h1 class="text-center mt-5 text-success my-5">Saved Recipes</h1>
+
+<div class="container">
+    <div class="row">
+        @if(allSavedRecipe.length>0){
+            @for (item of allSavedRecipe; track $index) {
+        <div class="col-md-3 shadow mb-4 mx-2 pb-3">
+            <img [src]="item.image" (click)="viewRecipe(item.recipeId)" alt="no image" class="w-100 rounded">
+            <h4 class="mt-2 text-center">{{item.name.slice(0,15)}}</h4>
+            <div class="d-flex justify-content-end" >
+                <button (click)="deleteSavedRecipes(item._id)" class="btn btn-danger "> <i class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+        }
+        }@else {
+            <div class="w-100 my-5 d-flex justify-content-center align-items-center flex-column">
+            <p class="text-danger ">no saved Recipes</p>
+            <button routerLink="/all-recipes" class="btn btn-success mt-3">back to all recipes</button>
+            </div>
+        }
+        
+    </div>
+</div>

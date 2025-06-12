@@ -7,6 +7,8 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { ViewRecipeComponent } from './view-recipe/view-recipe.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { SavedrecipesComponent } from './savedrecipes/savedrecipes.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
@@ -16,6 +18,8 @@ export const routes: Routes = [
     {path:'about',component:AboutComponent},
     {path:'contact',component:ContactComponent},
     {path:'view/:id',component:ViewRecipeComponent},
+    {path:'saved-recipes',component:SavedrecipesComponent},
+    {path:'profile',component:ProfileComponent},
     {path:'**',component:PagenotfoundComponent}
 
 ];

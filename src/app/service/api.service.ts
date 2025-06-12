@@ -55,5 +55,20 @@ export class ApiService {
     return this.http.post(`${this.serverurl}/download-recipe/${rec}`,reqBody,this.appendToken())
     
   }
+
+  //api to get all saved userRecipes
+  getAllUserSavedRecipesApi(){
+    return this.http.get(`${this.serverurl}/saved-user-recipes`,this.appendToken())
+  }
+
+  // api to delete saved recipe
+  deleteUserSavedRecipesApi(id:string){
+    return this.http.delete(`${this.serverurl}/delete-saved-user-recipe/${id}`)
+  }
+
+  //api to get all downloadRecipes 
+  getAllUserDownloadedRecipesApi(){
+    return this.http.get(`${this.serverurl}/downloaded-user-recipes`,this.appendToken())
+  }
 }
 
