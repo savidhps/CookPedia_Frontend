@@ -40,6 +40,9 @@ export class LoginComponent {
           })
           sessionStorage.setItem('user',JSON.stringify(result.existingUser))
           sessionStorage.setItem("token",result.token)
+          if (result.existingUser.role=='admin') {
+            this.router.navigateByUrl('/admin-home')
+          }else
           this.router.navigateByUrl('/')
 
         },

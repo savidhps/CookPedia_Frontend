@@ -70,5 +70,10 @@ export class ApiService {
   getAllUserDownloadedRecipesApi(){
     return this.http.get(`${this.serverurl}/downloaded-user-recipes`,this.appendToken())
   }
+  //api to update profile pic
+  updateProfileApi(reqbody:any){
+    return this.http.put(`${this.serverurl}/profile-update`,reqbody,this.appendToken())
+
+  }
 }
 

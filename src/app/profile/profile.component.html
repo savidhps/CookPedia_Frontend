@@ -22,7 +22,7 @@
                         <img [src]="uploadedImage==''? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBvBqfG9-OQFMsJDTUJVzpVrwptxoNf7s9qw&s':uploadedImage"
                         alt="No Profile" style="width: 290px;height: 200px;">
                 </label>
-                <button class="btn btn-success mt-3 w-100">Upload</button>
+                <button (click)="upload()" class="btn btn-success mt-3 w-100">Upload</button>
             </div>
         </div>
     </div>
