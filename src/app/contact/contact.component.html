@@ -76,12 +76,12 @@
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-4">
-            <form class="p-5 rounded shadow">
+            <form [formGroup]="testimonialForm" (ngSubmit)="submitForm()" class="p-5 rounded shadow">
                 <h2>Client Testimony</h2>
-                <div class="my-4"><input type="text" placeholder="name" class="form-control"></div>
-                <div class="mb-4"><input type="text" placeholder="email" class="form-control"></div>
-                <div class="mb-4"><textarea class="form-control" name="" id="" placeholder="message"></textarea></div>
-                <p class="md-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia ducimus quod magnam modi sed nam magni deleniti porro dolorum? Excepturi quibusdam quia error placeat at nulla neque culpa assumenda laudantium.</p>
+                <div class="my-4"><input name="name" formControlName="name" type="text" placeholder="name" class="form-control"></div>
+                <div class="mb-4"><input name="email" formControlName="email" type="text" placeholder="email" class="form-control"></div>
+                <div class="mb-4"><textarea name="message" formControlName="message" class="form-control" name="" id="" placeholder="message"></textarea></div>
+                <p class="md-3">By submitting, you are agreeing to the terms and condition of our website we may use your details in our site.</p>
                 <button class="btn btn-success">Submit</button>
             </form>
         </div>
