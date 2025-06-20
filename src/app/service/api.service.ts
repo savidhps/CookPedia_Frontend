@@ -98,6 +98,18 @@ export class ApiService {
   addTestimonialApi(reqBody:any){
     return this.http.post(`${this.serverurl}/add-testimonial`,reqBody)
   }
+  //api to get all testimonial
+  getAllTestimonialsApi(){
+    return this.http.get(`${this.serverurl}/all-testimonial`)
+  }
+  // api to update testominial
+  updateTestominialStatusApi(id:any,reqbody:any){
+    return this.http.put(`${this.serverurl}/update-testominial/${id}`,reqbody)
+  }
+  //api to get all approved testominial
+  getAllApprovedTestominialApi(){
+    
+  }
 
 }
 

@@ -16,13 +16,14 @@ export class ContactComponent {
     this.testimonialForm=fb.group({
       name:["",[Validators.required,Validators.pattern('[a-zA-z]*')]],
       email:["",[Validators.required,Validators.email]],
-      message:["",[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]]
+      message:["",[Validators.required,Validators.pattern('[a-zA-Z0-9.!@#$%^&*]*')]]
 
     })
   }
 
   submitForm(){
-    if(this.testimonialForm.value.invalid){
+    // const {name,email,message}=tes
+    if(this.testimonialForm.invalid){
       Swal.fire({
         title:"opps",
         text:'please fill the form properly',

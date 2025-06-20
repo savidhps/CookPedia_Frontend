@@ -13,6 +13,7 @@
             </div>
             <h3 class="text-center my-3">All Testimonial Request</h3>
             <div class="table-responsive px-4 my-5">
+                @if (alltestominals.length>0) {
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -25,20 +26,32 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @for (item of alltestominals; track $index) {
                         <tr>
-                            <td>1</td>
-                            <td>dumm</td>
-                            <td>dummd</td>
-                            <td>dummd</td>
+                            <td>{{$index+1}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.message}}</td>
                             <td>
-                                <button class="btn btn-success me-3">Approve</button>
-                                <button class="btn btn-danger">Reject</button>
+                                @if (item.PermissionStatus=='pending') {
+                                <button type="button" (click)="statusChange(item._id,'approved')" class="btn btn-success me-3">Approve</button>
+                                <button type="button" (click)="statusChange(item._id,'rejected')" class="btn btn-danger">Reject</button>
+                                }@else if (item.PermissionStatus=='rejected') {
+                                <h5  class=" text-danger">Reject</h5>
+                                }@else if (item.PermissionStatus=='approved') {
+                                <h5 class=" text-success ">Approve</h5>
+                                }@else {
+                                <h4>Loading...</h4>
+                                }
+
                             </td>
-                        </tr>
+                        </tr>}
                     </tbody>
                 </table>
+                }
+                @else {<h3 class="text-danger ms-4">NO Requests ...</h3>}
+
             </div>
-            <h3 class="text-danger ms-4">NO Requests ...</h3>
         </div>
     </div>
 </div>
